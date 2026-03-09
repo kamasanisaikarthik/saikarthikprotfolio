@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karthik | Video Editor & Poster Designer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#0d1b2a;
+color:#fff;
+scroll-behavior:smooth;
+}
+
+/* HERO */
+
+.hero{
+background:linear-gradient(135deg,#1e3a8a,#1e40af);
+text-align:center;
+padding:4rem 1.5rem;
+animation:fadeIn 1.5s ease-in-out;
+}
+
+.hero h1{
+font-size:2.5rem;
+}
+
+.hero h2{
+font-size:1.4rem;
+color:#c7d2fe;
+margin-bottom:1rem;
+}
+
+.hero p{
+max-width:700px;
+margin:auto;
+margin-bottom:1.5rem;
+color:#e0e7ff;
+line-height:1.6;
+}
+
+.btn{
+background:#3b82f6;
+padding:.75rem 1.5rem;
+border-radius:50px;
+text-decoration:none;
+color:white;
+font-weight:600;
+transition:.3s;
+}
+
+.btn:hover{
+background:#2563eb;
+box-shadow:0 0 12px #3b82f6;
+}
+
+main{
+max-width:1100px;
+margin:2rem auto;
+padding:0 1rem;
+}
+
+h2{
+text-align:center;
+margin-bottom:1.5rem;
+color:#93c5fd;
+}
+
+/* VIDEO GRID */
+
+.video-gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:1.5rem;
+}
+
+.video-card{
+background:#1e293b;
+border-radius:12px;
+overflow:hidden;
+transition:.3s;
+}
+
+.video-card:hover{
+transform:translateY(-6px);
+box-shadow:0 6px 20px rgba(59,130,246,0.4);
+}
+
+.video-card h3{
+margin:.8rem;
+color:#bfdbfe;
+}
+
+.video-gallery video{
+width:100%;
+aspect-ratio:9/16;
+object-fit:cover;
+background:black;
+}
+
+/* POSTER GRID */
+
+.poster-gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:1.5rem;
+align-items:start;
+}
+
+.poster-card{
+background:#1e293b;
+border-radius:12px;
+overflow:hidden;
+cursor:pointer;
+}
+
+.poster-card img{
+width:100%;
+height:auto;
+display:block;
+transition:.4s;
+}
+
+.poster-card:hover img{
+transform:scale(1.03);
+}
+
+/* LIGHTBOX */
+
+.lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:1000;
+}
+
+.lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
+
+.lightbox.active{
+display:flex;
+}
+
+/* FOOTER */
+
+footer{
+background:#1e3a8a;
+text-align:center;
+padding:1.5rem;
+margin-top:2rem;
+color:#dbeafe;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(-30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+
+<h1>Sai Karthik</h1>
+<h2>Video Editor & Poster Designer</h2>
+
+<p>
+I’m a passionate video editor and creative designer dedicated to crafting cinematic visuals,
+brand stories, and engaging social media content.
+</p>
+
+<a href="#portfolio" class="btn">View My Work</a>
+
+</header>
+
+
+<main>
+
+<section id="portfolio">
+
+<h2>🎬 My Video Editing Projects</h2>
+
+<div class="video-gallery">
+
+<div class="video-card">
+<h3>Promotional Reel</h3>
+<video controls>
+<source src="assets/mahitha hospital.mp4" type="video/mp4">
+</video>
+</div>
+
+<div class="video-card">
+<h3>YouTube Short</h3>
+<video controls>
+<source src="assets/T project-7.mp4" type="video/mp4">
+</video>
+</div>
+
+<div class="video-card">
+<h3>AI Video</h3>
+<video controls>
+<source src="assets/final .mp4" type="video/mp4">
+</video>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>🖼️ My Poster Designs</h2>
+
+<div class="poster-gallery">
+
+<div class="poster-card">
+<img src="assets/BKP homes cover page.jpg">
+</div>
+
+<div class="poster-card">
+<img src="assets/political.jpg">
+</div>
+
+<div class="poster-card">
+<img src="assets/poster.jpg.jpeg">
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<p>© 2025 Karthik | Video Editor & Poster Designer</p>
+<p>📞 +91 93464 80733 | ✉️ adverzdigitalmedia@gmail.com</p>
+
+</footer>
+
+
+<!-- LIGHTBOX -->
+
+<div class="lightbox" id="lightbox">
+<img id="lightbox-img">
+</div>
+
+
+<script>
+
+const posters = document.querySelectorAll(".poster-card img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+posters.forEach(img=>{
+img.addEventListener("click",()=>{
+lightbox.classList.add("active");
+lightboxImg.src = img.src;
+});
+});
+
+lightbox.addEventListener("click",()=>{
+lightbox.classList.remove("active");
+});
+
+</script>
+
+
+</body>
+</html>
